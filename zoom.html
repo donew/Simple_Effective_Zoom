@@ -1,0 +1,90 @@
+<!DOCTYPE html/>
+<html>
+<head>
+<title>
+Simple and Effective Zoom
+</title>
+
+<style>
+    body{
+    background: #ddd;text-align: center;}
+.zoom-container{
+height: 400px;
+width: 500px;
+box-shadow: 0 14px 54px -1px #eee;
+-webkit-box-shadow: 0 14px 54px -1px #eee;
+-moz-box-shadow:0 14px 54px -1px #eee;
+box-shadow: 0 14px 54px -1px #eee;
+margin: 0 auto;
+overflow: hidden;
+    display: inline-block;text-align: left;
+    background-color: #0098ff;
+    color:#fff;
+    font-weight: bold;
+}
+    .zoom-container img{
+    position: relative;
+    }
+</style>
+
+</head>
+<body>  
+    <div class="zoom-container">
+        <img class="fc_transform" src="http://cdn.firstcry.com/brainbees/images/products/zoom/487361a.jpg" alt="sample-zoom" title="@donew Simple and Effective Zoom"/>      
+    </div>
+     <div class="zoom-container">
+        <pre>$(".zoom-container").mousemove(function (e) {
+        var $img_wid = $(this).find("img");
+        var imgCtnWid = $(this).width();
+        var imgCtnHet = $(this).height();
+        var he = $img_wid.height() - imgCtnHet;
+        var wi = $img_wid.width() - imgCtnWid;
+        var parentOffset = $(this).offset();
+        var relX = e.pageX - parentOffset.left;
+        var relY = e.pageY - parentOffset.top;       
+        if ($img_wid.width() <= imgCtnWid) { }
+        else {
+            var wi_all = relX / imgCtnWid * 100;
+            var perXimg = wi * wi_all / 100;
+        }
+        if ($img_wid.height() <= imgCtnHet) {  }
+        else {
+
+            var top_all = relY / imgCtnHet * 100;
+            var perimg = he * top_all / 100;
+        }
+        $img_wid.css({ "left": -perXimg, "top": -perimg });
+    });
+});</pre>
+    </div>
+     
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+        $(function () {
+	//Class name to be passed in which you want to perform the zoom effect
+    $(".zoom-container").mousemove(function (e) {
+        var $img_wid = $(this).find("img");
+        var imgCtnWid = $(this).width();
+        var imgCtnHet = $(this).height();
+        var he = $img_wid.height() - imgCtnHet;
+        var wi = $img_wid.width() - imgCtnWid;
+        var parentOffset = $(this).offset();
+        var relX = e.pageX - parentOffset.left;
+        var relY = e.pageY - parentOffset.top;       
+        if ($img_wid.width() <= imgCtnWid) { }
+        else {
+            var wi_all = relX / imgCtnWid * 100;
+            var perXimg = wi * wi_all / 100;
+        }
+        if ($img_wid.height() <= imgCtnHet) {  }
+        else {
+
+            var top_all = relY / imgCtnHet * 100;
+            var perimg = he * top_all / 100;
+        }
+        $img_wid.css({ "left": -perXimg, "top": -perimg });
+    });
+});
+    </script>
+</body>
+</html>
